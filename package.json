@@ -1,0 +1,11 @@
+{
+  "name": "toguz-back",
+  "version": "1.0.0",
+  "scripts": {
+    "tsc": "tsc",
+    "start": "tsc && node dist/index.js"
+  },
+  "devDependencies": {
+    "typescript": "^5.2.2"
+  }
+}
