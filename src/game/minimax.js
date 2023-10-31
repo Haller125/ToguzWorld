@@ -104,7 +104,7 @@ export function withAB(board, d1, player, isAtsyrau = false) {
 
   if (player === 1) { board = board.rotate(); }
 
-  let score = minimaxWithAB(board, d1, MIN_INT, MAX_INT, player, pointers1, isAtsyrau);
+  let score = minimaxWithAB(board, d1, MIN_INT, MAX_INT, 0, pointers1, isAtsyrau);
 
   return [pointers1.move, pointers1.tuzdek, score];
 }
