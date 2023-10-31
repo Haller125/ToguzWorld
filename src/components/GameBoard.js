@@ -48,7 +48,7 @@ const GameBoard = () => {
             <Pit
               key={idx}
               count={count}
-              idx={2 * pitsCount - 1 - idx}
+              idx={idx + pitsCount}
             // reverse index
                 // idx={idx}
               cellImg={cell2}
