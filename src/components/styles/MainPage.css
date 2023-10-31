@@ -1,0 +1,60 @@
+/* MainPage.css 
+body {
+    margin: 0;
+    padding: 0;
+    background: #f3e2c1;
+    font-family: 'Trebuchet MS', sans-serif;
+}
+ */
+ body {
+    background-image: url('../../images/toguz-korgool-bg.png');
+    background-size: cover;
+    background-position: center center; /* Center both horizontally and vertically */
+    background-repeat: no-repeat;
+}
+
+.vertical-center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-container {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+header {
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+#Heading{
+    color: #f1a66d;
+    -webkit-text-stroke: 2px #000; /* For Webkit-based browsers like Chrome */
+    text-stroke: 2px #000; /* Standard syntax */
+}
+
+#Heading h1{
+    font-size: 55px;
+}
+
+button {
+    background: #edd7a8;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 18px;
+    cursor: pointer;
+    margin: 5px;
+    color: #824f33;
+}
+
+button:hover {
+    background: #f3c981;
+}

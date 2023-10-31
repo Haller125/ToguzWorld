@@ -1,17 +1,24 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom'; // Import Link
 import Header from './components/Header';
 import Footer from './components/Footer';
 import GameBoard from './components/GameBoard';
+import MainPage from './components/MainPage';
 
 function App() {
+    const [currentPage, setCurrentPage] = useState('main');
+
+    const handlePageChange = (page) => {
+        setCurrentPage(page);
+    };
+    
     return (
         <Router>
             <div>
                 <Header />
                 <Routes>
-                    <Route path="/" element={<GameBoard />} exact />  {/* <-- Using GameBoard for the home route */}
-                    <Route path="/about" element={<div>About</div>} />
+                    <Route path="/" element={<MainPage />} exact />
+                    <Route path="/game" element={<GameBoard />} />
                 </Routes>
                 <Footer />
             </div>

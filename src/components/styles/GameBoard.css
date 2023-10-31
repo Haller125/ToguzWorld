@@ -4,6 +4,8 @@
     align-items: center;
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: center; /* Center horizontally */
+    background-position-y: center; /* Center vertically */
 }
 
 .player-side {

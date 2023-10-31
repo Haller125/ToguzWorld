@@ -16,7 +16,7 @@ const GameBoard = () => {
     const player2WinCount = 3;
 
     return (
-        <div className="game-board" style={{ backgroundImage: `url(${background})` }}>
+        <div className="game-board" style={{ backgroundImage: `url(${background})`, height: '2000px' }}>
             <div className="player-side top-side">
                 {Array.from({ length: totalPits }).map((_, idx) => (
                     <div key={idx} className="pit-container">
