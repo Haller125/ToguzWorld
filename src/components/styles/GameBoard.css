@@ -6,6 +6,7 @@
     background-size: cover;
     background-position: center; /* Center horizontally */
     background-position-y: center; /* Center vertically */
+    height: 1000px;
 }
 
 .player-side {
