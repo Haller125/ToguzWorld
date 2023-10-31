@@ -97,59 +97,14 @@ export function minimaxWithAB(
   }
 }
 
-export function withAB(d1, d2) {
+export function withAB(board, d1, player, isAtsyrau = false) {
   const MIN_INT = Number.MIN_SAFE_INTEGER;
   const MAX_INT = Number.MAX_SAFE_INTEGER;
-
-  let board = new Board();
   let pointers1 = { move: 0, tuzdek: false };
-  let pointers2 = { move: 0, tuzdek: false };
 
-  let atsyrauFor1 = false;
-  let atsyrauFor2 = false;
+  if (player === 1) { board = board.rotate(); }
 
-  while (true) {
-    if (board.isMovePossible(0)) {
-      // busy("Alice"); // Assuming you have a busy function implementation
-      minimaxWithAB(board, d1, MIN_INT, MAX_INT, 0, pointers1);
-      board.pli(pointers1.move, pointers1.tuzdek, 0);
-      // unbusy(); // Assuming you have an unbusy function implementation
-    } else {
-      if (!atsyrauFor1) {
-        atsyrauFor1 = true;
-      } else {
-        board.atsyrauFunction(1);
-        console.log(board.rotate().toString());
-        break;
-      }
-    }
+  let score = minimaxWithAB(board, d1, MIN_INT, MAX_INT, player, pointers1, isAtsyrau);
 
-    console.log(board.rotate().toString());
-    // Implement the logic for determining the winner based on kaznas.
-
-    if (board.isMovePossible(1)) {
-      // busy("Bob"); // Assuming you have a busy function implementation
-      // let rotated = board.rotate();
-      let value = minimaxWithAB(board, d2, MIN_INT, MAX_INT, 1, pointers2);
-      if (pointers1.move === -1) {
-        console.log("Game ended.");
-        // TODO: determine winner from kaznas
-        break;
-      }
-      board.pli(pointers2.move, pointers2.tuzdek, 1);
-      console.log(
-        `Opponent's move: ${pointers1.move + 1} (worst outcome: ${value})`
-      );
-    } else {
-      if (!atsyrauFor2) {
-        atsyrauFor2 = true;
-      } else {
-        board.atsyrauFunction(0);
-        console.log(board.rotate().toString());
-        break;
-      }
-    }
-    console.log(board.rotate().toString());
-    // unbusy(); // Assuming you have an unbusy function implementation
-  }
+  return [pointers1.move, pointers1.tuzdek, score];
 }
