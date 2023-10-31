@@ -34,6 +34,45 @@ const GameBoard = () => {
 
   const handlePitClick = (pitId) => {
     console.log(`Pit ${pitId} clicked`);
+    let board = gameBoard.clone();
+    board.pli(pitId, false);
+    console.log(board);
+    setGameBoard(board);
+    console.log(gameBoard);
+
+    /*
+          Pit 7 clicked
+          variable board
+          Board {sockets: Array(18), tuzdeks: Array(2), kaznas: Array(2)}
+          kaznas
+          :
+          (2) [0, 0]
+          sockets
+          :
+          (18) [9, 9, 9, 9, 9, 9, 9, 1, 10, 10, 10, 10, 10, 10, 10, 10, 9, 9]
+          tuzdeks
+          :
+          (2) [-1, -1]
+          [[Prototype]]
+          :
+          Object
+
+
+          variable GameBoard
+          Board {sockets: Array(18), tuzdeks: Array(2), kaznas: Array(2)}
+          kaznas
+          :
+          (2) [0, 0]
+          sockets
+          :
+          (18) [9, 9, 9, 9, 9, 9, 9, 1, 10, 10, 10, 10, 10, 10, 10, 10, 9, 9]
+          tuzdeks
+          :
+          (2) [-1, -1]
+          [[Prototype]]
+          :
+          Object
+*/
   };
 
   return (
