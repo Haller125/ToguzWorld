@@ -4,6 +4,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import GameBoard from './components/GameBoard';
 import MainPage from './components/MainPage';
+import './App.css';
 
 function App() {
     const [currentPage, setCurrentPage] = useState('main');
