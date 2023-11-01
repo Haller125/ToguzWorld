@@ -8,6 +8,7 @@ import cell2 from "../images/cell2.png";
 import winBoard from "../images/winBoard.png";
 import { K as pitsCount, N as ballsCount } from "../game/constant";
 import { withAB } from "../game/minimax";
+import MusicControl from "./MusicControler";
 
 const Pit = ({ count, idx, cellImg, onClick }) => (
   <div className="pit-container" onClick={() => onClick(idx)}>
@@ -46,19 +47,21 @@ const isGameOver = (gameBoard) => {
   );
 };
 
-const GameBoard = ({ toggleMelody, melodyPlaying }) => {
+const GameBoard = ({ toggleMelody, melodyPlaying, audioRef }) => {
   const [gameBoard, setGameBoard] = useState(new Board());
 
   const handlePitClick = (pitId) => {
     if (isGameOver(gameBoard)) {
       const message =
-        gameBoard.kaznas[0] > gameBoard.kaznas[1] ? "You win!" : "You lose!";
+        gameBoard.kaznas[0] > gameBoard.kaznas[1]
+          ? "Qūtyqtaimyn, sız jeñdıñız!"
+          : "Sız jeñılıp qaldyñyz! Qaitadan küşıñızdı synañyz!";
       alert(message);
       return;
     }
 
     if (pitId < 0 || pitId >= pitsCount) {
-      alert("You cannot move the opponent's balls");
+      alert("Sız qarsylasyñyzdyñ qūmalağyn jüre almaisyz!");
       return;
     }
 
@@ -70,42 +73,48 @@ const GameBoard = ({ toggleMelody, melodyPlaying }) => {
   };
 
   return (
-    <div
-      className="game-board"
-      style={{ backgroundImage: `url(${background})` }}
-    >
-      <Link to="/">
-        <button>Home</button>
-      </Link>
-      <div className="melody-button">
-        <button onClick={toggleMelody}>
-          {melodyPlaying ? "Stop Melody" : "Play Melody"}
-        </button>
-      </div>
+    <div className="game-board">
+      <div
+        className="game-board-wrapper"
+        style={{ backgroundImage: `url(${background})` }}
+      >
+        <div style={{ display: "flex", flexDirection: "row" }}>
+          <Link to="/">
+            <button>Bas bet</button>
+          </Link>
+          <MusicControl
+            toggleMelody={toggleMelody}
+            melodyPlaying={melodyPlaying}
+            audioRef={audioRef}
+          />
+        </div>
 
-      <div className="player-side top-side">
-        {gameBoard.sockets.slice(pitsCount, 2 * pitsCount).map((count, idx) => (
-          <Pit
-            key={idx}
-            count={count}
-            idx={idx + pitsCount}
-            cellImg={cell2}
-            onClick={handlePitClick}
-          />
-        ))}
-      </div>
-      <WinBoardContainer count={gameBoard.kaznas[1]} />
-      <WinBoardContainer count={gameBoard.kaznas[0]} />
-      <div className="player-side bottom-side">
-        {gameBoard.sockets.slice(0, pitsCount).map((count, idx) => (
-          <Pit
-            key={idx}
-            count={count}
-            idx={idx}
-            cellImg={cell1}
-            onClick={handlePitClick}
-          />
-        ))}
+        <div className="player-side top-side">
+          {gameBoard.sockets
+            .slice(pitsCount, 2 * pitsCount)
+            .map((count, idx) => (
+              <Pit
+                key={idx}
+                count={count}
+                idx={idx + pitsCount}
+                cellImg={cell2}
+                onClick={handlePitClick}
+              />
+            ))}
+        </div>
+        <WinBoardContainer count={gameBoard.kaznas[1]} />
+        <WinBoardContainer count={gameBoard.kaznas[0]} />
+        <div className="player-side bottom-side">
+          {gameBoard.sockets.slice(0, pitsCount).map((count, idx) => (
+            <Pit
+              key={idx}
+              count={count}
+              idx={idx}
+              cellImg={cell1}
+              onClick={handlePitClick}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );

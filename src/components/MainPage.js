@@ -1,30 +1,27 @@
 import React from 'react';
 import '../styles/MainPage.css';
 import { Link } from 'react-router-dom';
+import MusicControl from './MusicControler';
 
-const MainPage = ({ toggleMelody, melodyPlaying }) => {
+const MainPage = ({ toggleMelody, melodyPlaying, audioRef }) => {
     return (
         <div className="main-container vertical-center">
             <header id="Heading">
-                <h1>Welcome to Toguz World: Battle of Minds</h1>
+                <h1>Toğyzqūmalaq älemıne qoş keldıñız: Aqyldar saiysyna!</h1>
             </header>
             <main>
                 <div className="start-button">
                     <Link to="/game">
-                        <button>Start the Game</button>
+                        <button>Oiyndy bastau</button>
                     </Link>
                 </div>
                 <div className="info-buttons">
-                    <button>How to Play</button>
+                    <button>Qalai oinau kerek?</button>
                 </div>
                 <div className="info-buttons">
-                    <button>About Toguz Korgool</button>
+                    <button>Toğyzqūmalaq turaly</button>
                 </div>
-                <div className="melody-button">
-                    <button onClick={toggleMelody}>
-                        {melodyPlaying ? 'Stop Melody' : 'Play Melody'}
-                    </button>
-                </div>
+                <MusicControl toggleMelody={toggleMelody} melodyPlaying={melodyPlaying} audioRef={audioRef} />
             </main>
         </div>
     );

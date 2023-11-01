@@ -11,7 +11,7 @@ const footerStyle = {
 
 function Footer() {
   return (
-    <footer style={footerStyle}>&copy; 2023 Toguz World</footer>
+    <footer style={footerStyle}>&copy; 2023 Toğyz Älem</footer>
   );
 }
 

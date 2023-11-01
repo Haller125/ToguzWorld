@@ -28,8 +28,8 @@ function App() {
                 <Header />
                 <audio ref={audioRef} src={melody} />
                 <Routes>
-                    <Route path="/" element={<MainPage toggleMelody={toggleMelody} melodyPlaying={melodyPlaying} />} exact />
-                    <Route path="/game" element={<GameBoard toggleMelody={toggleMelody} melodyPlaying={melodyPlaying} />} />
+                    <Route path="/" element={<MainPage toggleMelody={toggleMelody} melodyPlaying={melodyPlaying} audioRef={audioRef} />} exact />
+                    <Route path="/game" element={<GameBoard toggleMelody={toggleMelody} melodyPlaying={melodyPlaying} audioRef={audioRef} />} />
                 </Routes>
                 <Footer />
             </div>

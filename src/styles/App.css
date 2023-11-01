@@ -1,9 +1,17 @@
+/* Existing styles for .game-board, used to center the new .game-board-wrapper */
 .game-board {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+/* New wrapper class */
+.game-board-wrapper {
   background-repeat: no-repeat;
   background-size: cover;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .player-side {
