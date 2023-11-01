@@ -6,6 +6,7 @@ import cell1 from "../images/cell1.png";
 import cell2 from "../images/cell2.png";
 import winBoard from "../images/winBoard.png";
 import { K as pitsCount } from "../game/constant";
+import { withAB } from "../game/minimax";
 
 const Pit = ({ count, idx, cellImg, handlePitClick }) => (
   <div className="pit-container" onClick={() => handlePitClick(idx)}>
@@ -34,12 +35,25 @@ const GameBoard = () => {
 
   const handlePitClick = (pitId) => {
     console.log(`Pit ${pitId} clicked`);
-    let board = gameBoard.clone();
-    board.pli(pitId, false);
-    console.log(board);
-    setGameBoard(board);
-    console.log(gameBoard);
 
+    if (pitId < 0 || pitId >= pitsCount) {
+      alert("You canot move opponent's balls");
+      return;
+    }
+
+    let board = gameBoard.clone();
+    const player1 = 0;
+    board.pli(pitId, false, player1);
+    console.log(board.toString());
+    // setGameBoard(board);
+
+    const computer = 1;
+    const abResult = withAB(board, 5, computer);
+    console.log(abResult);
+
+    board.pli(pitsCount + abResult[0], abResult[1], computer);
+    console.log(board.toString());
+    setGameBoard(board);
     /*
           Pit 7 clicked
           variable board
@@ -88,8 +102,6 @@ const GameBoard = () => {
               key={idx}
               count={count}
               idx={idx + pitsCount}
-            // reverse index
-                // idx={idx}
               cellImg={cell2}
               handlePitClick={handlePitClick}
             />

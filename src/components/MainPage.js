@@ -1,5 +1,5 @@
 import React, { useState, useRef} from 'react';
-import './styles/MainPage.css';
+import '../styles/MainPage.css';
 import melody from '../music/melody.mp3';
 import { Link } from 'react-router-dom';
 

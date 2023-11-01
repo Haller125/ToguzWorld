@@ -1,4 +1,3 @@
-import Board from "./board";
 import { K, N } from "./constant";
 
 export function minimaxWithAB(
