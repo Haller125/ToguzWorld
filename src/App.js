@@ -1,18 +1,35 @@
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'; // Import Link
+import { useState, useRef } from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import GameBoard from './components/GameBoard';
 import MainPage from './components/MainPage';
+import melody from './music/melody.mp3';
 import './styles/App.css';
 
 function App() {
+    const [melodyPlaying, setMelodyPlaying] = useState(false);
+    const audioRef = useRef(null);
+
+    const toggleMelody = () => {
+        setMelodyPlaying(!melodyPlaying);
+        if (audioRef.current) {
+            if (melodyPlaying) {
+                audioRef.current.pause();
+            } else {
+                audioRef.current.play();
+            }
+        }
+    };
+
     return (
         <Router>
             <div>
                 <Header />
+                <audio ref={audioRef} src={melody} />
                 <Routes>
-                    <Route path="/" element={<MainPage />} exact />
-                    <Route path="/game" element={<GameBoard />} />
+                    <Route path="/" element={<MainPage toggleMelody={toggleMelody} melodyPlaying={melodyPlaying} />} exact />
+                    <Route path="/game" element={<GameBoard toggleMelody={toggleMelody} melodyPlaying={melodyPlaying} />} />
                 </Routes>
                 <Footer />
             </div>

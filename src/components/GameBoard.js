@@ -1,15 +1,16 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import Board from "../game/board";
 import background from "../images/bg.png";
 import board from "../images/board.png";
 import cell1 from "../images/cell1.png";
 import cell2 from "../images/cell2.png";
 import winBoard from "../images/winBoard.png";
-import { K as pitsCount } from "../game/constant";
+import { K as pitsCount, N as ballsCount } from "../game/constant";
 import { withAB } from "../game/minimax";
 
-const Pit = ({ count, idx, cellImg, handlePitClick }) => (
-  <div className="pit-container" onClick={() => handlePitClick(idx)}>
+const Pit = ({ count, idx, cellImg, onClick }) => (
+  <div className="pit-container" onClick={() => onClick(idx)}>
     <img src={board} alt={`Container ${idx + 1}`} className="container-img" />
     {Array.from({ length: count }).map((_, ballIdx) => (
       <img
@@ -30,63 +31,42 @@ const WinBoardContainer = ({ count }) => (
   </div>
 );
 
-const GameBoard = () => {
+const makeComputerMove = (gameBoard, depth = 5) => {
+  const board = gameBoard.clone();
+  const computer = 1;
+  const abResult = withAB(board, depth, computer);
+  board.pli(pitsCount + abResult[0], abResult[1], computer);
+  return board;
+};
+
+const isGameOver = (gameBoard) => {
+  return (
+    gameBoard.kaznas[0] >= ballsCount * pitsCount ||
+    gameBoard.kaznas[1] >= ballsCount * pitsCount
+  );
+};
+
+const GameBoard = ({ toggleMelody, melodyPlaying }) => {
   const [gameBoard, setGameBoard] = useState(new Board());
 
   const handlePitClick = (pitId) => {
-    console.log(`Pit ${pitId} clicked`);
-
-    if (pitId < 0 || pitId >= pitsCount) {
-      alert("You canot move opponent's balls");
+    if (isGameOver(gameBoard)) {
+      const message =
+        gameBoard.kaznas[0] > gameBoard.kaznas[1] ? "You win!" : "You lose!";
+      alert(message);
       return;
     }
 
-    let board = gameBoard.clone();
+    if (pitId < 0 || pitId >= pitsCount) {
+      alert("You cannot move the opponent's balls");
+      return;
+    }
+
     const player1 = 0;
-    board.pli(pitId, false, player1);
-    console.log(board.toString());
-    // setGameBoard(board);
+    const updatedBoard = gameBoard.clone();
+    updatedBoard.pli(pitId, false, player1);
 
-    const computer = 1;
-    const abResult = withAB(board, 5, computer);
-    console.log(abResult);
-
-    board.pli(pitsCount + abResult[0], abResult[1], computer);
-    console.log(board.toString());
-    setGameBoard(board);
-    /*
-          Pit 7 clicked
-          variable board
-          Board {sockets: Array(18), tuzdeks: Array(2), kaznas: Array(2)}
-          kaznas
-          :
-          (2) [0, 0]
-          sockets
-          :
-          (18) [9, 9, 9, 9, 9, 9, 9, 1, 10, 10, 10, 10, 10, 10, 10, 10, 9, 9]
-          tuzdeks
-          :
-          (2) [-1, -1]
-          [[Prototype]]
-          :
-          Object
-
-
-          variable GameBoard
-          Board {sockets: Array(18), tuzdeks: Array(2), kaznas: Array(2)}
-          kaznas
-          :
-          (2) [0, 0]
-          sockets
-          :
-          (18) [9, 9, 9, 9, 9, 9, 9, 1, 10, 10, 10, 10, 10, 10, 10, 10, 9, 9]
-          tuzdeks
-          :
-          (2) [-1, -1]
-          [[Prototype]]
-          :
-          Object
-*/
+    setGameBoard(makeComputerMove(updatedBoard));
   };
 
   return (
@@ -94,18 +74,25 @@ const GameBoard = () => {
       className="game-board"
       style={{ backgroundImage: `url(${background})` }}
     >
+      <Link to="/">
+        <button>Home</button>
+      </Link>
+      <div className="melody-button">
+        <button onClick={toggleMelody}>
+          {melodyPlaying ? "Stop Melody" : "Play Melody"}
+        </button>
+      </div>
+
       <div className="player-side top-side">
-        {gameBoard.sockets
-          .slice(pitsCount, 2 * pitsCount)
-          .map((count, idx) => (
-            <Pit
-              key={idx}
-              count={count}
-              idx={idx + pitsCount}
-              cellImg={cell2}
-              handlePitClick={handlePitClick}
-            />
-          ))}
+        {gameBoard.sockets.slice(pitsCount, 2 * pitsCount).map((count, idx) => (
+          <Pit
+            key={idx}
+            count={count}
+            idx={idx + pitsCount}
+            cellImg={cell2}
+            onClick={handlePitClick}
+          />
+        ))}
       </div>
       <WinBoardContainer count={gameBoard.kaznas[1]} />
       <WinBoardContainer count={gameBoard.kaznas[0]} />
@@ -116,7 +103,7 @@ const GameBoard = () => {
             count={count}
             idx={idx}
             cellImg={cell1}
-            handlePitClick={handlePitClick}
+            onClick={handlePitClick}
           />
         ))}
       </div>
