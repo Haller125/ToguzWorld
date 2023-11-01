@@ -32,7 +32,7 @@ const WinBoardContainer = ({ count }) => (
   </div>
 );
 
-const makeComputerMove = (gameBoard, depth = 5) => {
+const makeComputerMove = (gameBoard, depth = 7) => {
   const board = gameBoard.clone();
   const computer = 1;
   const abResult = withAB(board, depth, computer);

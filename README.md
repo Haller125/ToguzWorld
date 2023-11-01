@@ -1,70 +1,28 @@
-# Getting Started with Create React App
+# Report
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Alpha Test Results:
 
-## Available Scripts
+![response1](img/docs.google.com_forms_d_1GgEO4T6IJhfkBm-N14dz9N3FMJyEXoGhn_IXA3daG_E_edit.png)
+![response2](img/docs.google.com_forms_d_1GgEO4T6IJhfkBm-N14dz9N3FMJyEXoGhn_IXA3daG_E_edit%20(1).png)
+![response3](img/docs.google.com_forms_d_1GgEO4T6IJhfkBm-N14dz9N3FMJyEXoGhn_IXA3daG_E_edit%20(2).png)
+![response4](img/docs.google.com_forms_d_1GgEO4T6IJhfkBm-N14dz9N3FMJyEXoGhn_IXA3daG_E_edit%20(3).png)
+![response5](img/docs.google.com_forms_d_1GgEO4T6IJhfkBm-N14dz9N3FMJyEXoGhn_IXA3daG_E_edit%20(4).png)
 
-In the project directory, you can run:
+Beta Test Results:
+![response6](img/docs.google.com_forms_d_1BFPMEgMLPFGMdhsGL-kfZ3OvGAiGTeDAQjrzBiZHx7g_edit.png)
+![response7](img/docs.google.com_forms_d_1BFPMEgMLPFGMdhsGL-kfZ3OvGAiGTeDAQjrzBiZHx7g_edit%20(1).png)
+![response8](img/docs.google.com_forms_d_1BFPMEgMLPFGMdhsGL-kfZ3OvGAiGTeDAQjrzBiZHx7g_edit%20(2).png)
+![response9](img/docs.google.com_forms_d_1BFPMEgMLPFGMdhsGL-kfZ3OvGAiGTeDAQjrzBiZHx7g_edit%20(3).png)
+![response10](img/docs.google.com_forms_d_1BFPMEgMLPFGMdhsGL-kfZ3OvGAiGTeDAQjrzBiZHx7g_edit%20(4).png)
+![response11](img/docs.google.com_forms_d_1BFPMEgMLPFGMdhsGL-kfZ3OvGAiGTeDAQjrzBiZHx7g_edit%20(5).png)
+![response12](img/docs.google.com_forms_d_1BFPMEgMLPFGMdhsGL-kfZ3OvGAiGTeDAQjrzBiZHx7g_edit%20(6).png)
+![response13](img/docs.google.com_forms_d_1BFPMEgMLPFGMdhsGL-kfZ3OvGAiGTeDAQjrzBiZHx7g_edit%20(7).png)
 
-### `npm start`
+Post-Testing Survey Summary:
+Game Experience: Most users found the game engaging and enjoyed the unique cultural touch. There was a consensus on the need for a tutorial or guided walkthrough. One of the participants, familiar with the game Togyz Korgool, said that there is no adaptation of the game on the Internet where you can play with bots, and that she really likes our idea of playing with a bot trainer who teaches how to play
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Cultural Representation: Participants familiar with Toguz Korgool appreciated the authentic representation, while new users found it a delightful introduction to the game.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Potential Improvements: A common suggestion was the introduction of tutorials, guided gameplay, and in-game hints. Some also expressed interest in multiplayer options and global leaderboards.
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Willingness to Use Regularly: 7 out of 8 participants expressed an interest in playing the game regularly, especially if some of the suggested features were introduced.
