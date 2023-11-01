@@ -10,7 +10,7 @@ Alpha Test Results:
 
 Beta Test Results:
 ![response6](img/docs.google.com_forms_d_1BFPMEgMLPFGMdhsGL-kfZ3OvGAiGTeDAQjrzBiZHx7g_edit.png)
-![response7](img/docs.google.com_forms_d_1BFPMEgMLPFGMdhsGL-kfZ3OvGAiGTeDAQjrzBiZHx7g_edit%20(1).png)
+![response7](https://github.com/Haller125/ToguzWorld/blob/master/readme%20photos/beta2.png)
 ![response8](img/docs.google.com_forms_d_1BFPMEgMLPFGMdhsGL-kfZ3OvGAiGTeDAQjrzBiZHx7g_edit%20(2).png)
 ![response9](img/docs.google.com_forms_d_1BFPMEgMLPFGMdhsGL-kfZ3OvGAiGTeDAQjrzBiZHx7g_edit%20(3).png)
 ![response10](img/docs.google.com_forms_d_1BFPMEgMLPFGMdhsGL-kfZ3OvGAiGTeDAQjrzBiZHx7g_edit%20(4).png)
