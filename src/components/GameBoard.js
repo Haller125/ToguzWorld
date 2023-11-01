@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Board from "../game/board";
-import background from "../images/bg.png";
-import board from "../images/board.png";
-import cell1 from "../images/cell1.png";
-import cell2 from "../images/cell2.png";
-import winBoard from "../images/winBoard.png";
+import background from "../images/bg.webp";
+import board from "../images/board.webp";
+import cell1 from "../images/cell1.webp";
+import cell2 from "../images/cell2.webp";
+import winBoard from "../images/winBoard.webp";
 import { K as pitsCount, N as ballsCount } from "../game/constant";
 import { withAB } from "../game/minimax";
 import MusicControl from "./MusicControler";
