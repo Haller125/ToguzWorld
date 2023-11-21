@@ -78,7 +78,7 @@ export default class Board {
       this.tuzdeks[player] = target;
     }
     this.accountSocket(target, player);
-    return this;
+    return target;
   }
 
   rotate() {

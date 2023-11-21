@@ -10,15 +10,30 @@ import { K as pitsCount, N as ballsCount } from "../game/constant";
 import { withAB } from "../game/minimax";
 import MusicControl from "./MusicControler";
 
-const Pit = ({ count, idx, cellImg, onClick }) => (
-  <div className="pit-container" onClick={() => onClick(idx)}>
+const Pit = ({
+  count,
+  idx,
+  cellImg,
+  onClick,
+  onMouseEnter,
+  onMouseLeave,
+  previewPiecesCount,
+}) => (
+  <div
+    className="pit-container"
+    onClick={() => onClick(idx)}
+    onMouseEnter={onMouseEnter}
+    onMouseLeave={onMouseLeave}
+  >
     <img src={board} alt={`Container ${idx + 1}`} className="container-img" />
     {Array.from({ length: count }).map((_, ballIdx) => (
       <img
         key={ballIdx}
         src={cellImg}
         alt={`Ball ${ballIdx + 1}`}
-        className={`pit pit-${ballIdx}`}
+        className={`pit pit-${ballIdx} ${
+          ballIdx >= count - previewPiecesCount ? "preview" : ""
+        }`}
       />
     ))}
     <div className="pit-counter">{count}</div>
@@ -49,6 +64,8 @@ const isGameOver = (gameBoard) => {
 
 const GameBoard = ({ toggleMelody, melodyPlaying, audioRef }) => {
   const [gameBoard, setGameBoard] = useState(new Board());
+  const [previewBoard, setPreviewBoard] = useState(null);
+  const [previewLastIdx, setPreviewLastIdx] = useState(null);
 
   const handlePitClick = (pitId) => {
     if (isGameOver(gameBoard)) {
@@ -72,6 +89,32 @@ const GameBoard = ({ toggleMelody, melodyPlaying, audioRef }) => {
     setGameBoard(makeComputerMove(updatedBoard));
   };
 
+  const handlePitClickPreview = (pitId) => {
+    if (isGameOver(gameBoard)) {
+      return;
+    }
+
+    if (pitId < 0 || pitId >= pitsCount) {
+      return;
+    }
+
+    const player1 = 0;
+    const updatedBoard = gameBoard.clone();
+    let target = updatedBoard.pli(pitId, false, player1);
+    console.log(target);
+    updatedBoard.sockets[target] = gameBoard.sockets[target] + 1;
+    setPreviewLastIdx(target);
+
+    setPreviewBoard(updatedBoard);
+  };
+
+  const handlePitClickPreviewCancel = () => {
+    setPreviewBoard(null);
+    setPreviewLastIdx(null);
+  };
+
+  const boardToShow = previewBoard || gameBoard;
+
   return (
     <div className="game-board">
       <div
@@ -90,7 +133,7 @@ const GameBoard = ({ toggleMelody, melodyPlaying, audioRef }) => {
         </div>
 
         <div className="player-side top-side">
-          {gameBoard.sockets
+          {boardToShow.sockets
             .slice(pitsCount, 2 * pitsCount)
             .map((count, idx) => (
               <Pit
@@ -99,19 +142,34 @@ const GameBoard = ({ toggleMelody, melodyPlaying, audioRef }) => {
                 idx={idx + pitsCount}
                 cellImg={cell2}
                 onClick={handlePitClick}
+                previewPiecesCount={
+                  previewBoard
+                    ? previewBoard.sockets[idx + pitsCount] -
+                      (idx + pitsCount === previewLastIdx
+                        ? 0
+                        : gameBoard.sockets[idx + pitsCount])
+                    : 0
+                }
               />
             ))}
         </div>
-        <WinBoardContainer count={gameBoard.kaznas[1]} />
-        <WinBoardContainer count={gameBoard.kaznas[0]} />
+        <WinBoardContainer count={boardToShow.kaznas[1]} />
+        <WinBoardContainer count={boardToShow.kaznas[0]} />
         <div className="player-side bottom-side">
-          {gameBoard.sockets.slice(0, pitsCount).map((count, idx) => (
+          {boardToShow.sockets.slice(0, pitsCount).map((count, idx) => (
             <Pit
               key={idx}
               count={count}
               idx={idx}
               cellImg={cell1}
               onClick={handlePitClick}
+              onMouseEnter={() => handlePitClickPreview(idx)}
+              onMouseLeave={handlePitClickPreviewCancel}
+              previewPiecesCount={
+                previewBoard
+                  ? previewBoard.sockets[idx] - gameBoard.sockets[idx]
+                  : 0
+              }
             />
           ))}
         </div>

@@ -51,6 +51,10 @@
   z-index: 1;
 }
 
+.preview {
+  opacity: 0.25;
+}
+
 /* Specific positions for each ball in a 2-column style */
 .pit-0 { top: 5%; left: 22%; }
 .pit-1 { top: 5%; right: 22%; }
