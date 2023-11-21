@@ -6,6 +6,7 @@ import GameBoard from './components/GameBoard';
 import MainPage from './components/MainPage';
 import melody from './music/melody.mp3';
 import './styles/App.css';
+import InfoPage from "./components/Info page/InfoPage";
 
 function App() {
     const [melodyPlaying, setMelodyPlaying] = useState(false);
@@ -30,6 +31,7 @@ function App() {
                 <Routes>
                     <Route path="/" element={<MainPage toggleMelody={toggleMelody} melodyPlaying={melodyPlaying} audioRef={audioRef} />} exact />
                     <Route path="/game" element={<GameBoard toggleMelody={toggleMelody} melodyPlaying={melodyPlaying} audioRef={audioRef} />} />
+                    <Route path="/info" element={<InfoPage />}/>
                 </Routes>
                 <Footer />
             </div>
